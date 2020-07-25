@@ -37,12 +37,16 @@ en:
       blank: can't be blank
       must_exist: must exist
       taken: has already been taken
+    order:
+      fulfilled_status: fulfilled
+    order_id: abcd-xyz
   order:
     mark_fulfill: Mark Fulfilled
     already_fulfilled: Order status is already fulfilled
     all: All Orders
     create_order: Create Order
     add: Add Order item
+    details: Order Details
     view_details: View Details
     headers:
       status: Order Status
