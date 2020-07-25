@@ -1,0 +1,11 @@
+<div class="nested-fields well well-compact">
+  <div class="form-inline">
+    <%= f.label t('product.select_product') %>
+    <%= f.collection_select :product_id, Product.all, :id, :name, required: true %>
+    <%= f.label t('product.select_quantity') %>
+    <%= f.number_field :quantity, class: 'form-control', required: true %>
+    <%= link_to_remove_association f, data: {:confirm => t('order_item.remove')}, class: 'btn btn-default btn-xs' do %>
+      <div class="glyphicon glyphicon-remove"> X</div>
+    <% end %>
+  </div>
+</div>

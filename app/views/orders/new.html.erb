@@ -1,0 +1,15 @@
+<div class="container" >
+  <h2><%= t('order.create_order') %></h2>
+  <%= link_to t('order.all'), orders_path %>
+  <%= simple_form_for @order do |f| %>
+    <div class="tab-pane active" id="variants">
+      <%= f.simple_fields_for :order_items do |order_item| %>
+        <%= render 'order_item_fields', f: order_items %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association t('order.add'), f, :order_items %>
+      </div>
+    </div>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>

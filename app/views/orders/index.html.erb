@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="invalid-date alert"></div>
+  <h2><%=t('welcome')%></h2>
+  <div class="toolbar">
+    <div id="date-picker" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+      <input placeholder="Select date" type="text" id="search_order" value=<%= Date.current.strftime("%m/%d/%Y") %> class="form-control">
+      <i class="fa fa-calendar input-prefix"></i>
+    </div>
+    <div><%= link_to t('order.create_order'), new_order_path, class: 'btn btn-primary' %></div>
+  </div>
+  <div class='filtered-orders'>
+    <%= render partial: 'daily_order', locals: { orders: @orders, total_order_items: @total_order_items, average_quantity_sold: @average_quantity_sold } %>
+  </div>
+</div>

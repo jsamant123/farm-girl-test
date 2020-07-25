@@ -1,0 +1,34 @@
+<table class="table table-hover table-bordered">
+	<tr>
+		<th><%=t('order.headers.total_sale')%></th>
+		<th><%=t('order.headers.average')%></th>
+	</tr>
+	<% if orders.present? %>
+		<tr>
+			<td><%= total_order_items %></td>
+			<td><%= average_quantity_sold.to_f.round(2) %></td>
+		</tr>
+	<% else %>
+	  <tr><td colspan="12" style="text-align:center;"><%=t('order.no_order')%></td></tr>
+  <% end %>
+</table>
+<table class="table table-hover table-bordered">
+	<tr>
+		<th><%=t('order.headers.number')%></th>
+		<th><%=t('order.headers.fulfiller')%></th>
+		<th><%=t('order.headers.status')%></th>
+		<th><%=t('order.headers.actions')%></th>
+	</tr>
+	<% if orders.present? %>
+		<% orders.each do |order| %>
+			<tr>
+				<td><%= order.id %></td>
+				<td><%= order.fulfiller.name %></td>
+				<td><%= order.status %></td>
+				<td><%= link_to t('order.view_details'), order_path(order) %>
+			</tr>
+		<% end %>
+	<% else %>
+	  <tr><td colspan="12" style="text-align:center;"><%=t('order.no_order')%></td></tr>
+  <% end %>
+</table>

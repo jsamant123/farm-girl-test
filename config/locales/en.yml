@@ -30,8 +30,32 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  title: FarmgirlTask
+  welcome: Welcome to Farm Girl
   test:
     errors:
       blank: can't be blank
       must_exist: must exist
       taken: has already been taken
+  order:
+    all: All Orders
+    create_order: Create Order
+    add: Add Order item
+    view_details: View Details
+    headers:
+      status: Order Status
+      fulfiller: Order Fulfiller
+      number: Order No.
+      total_sale: Total Order Items
+      average: Average Quantity Sold
+      actions: Actions
+    no_order: No orders found
+    create:
+      success: Order created successfully!
+      error: Order could not be saved!
+      duplicate_order_item: Please select unique items
+  product:
+    select_quantity: Select Quantity
+    select_product: Select Product
+  order_item:
+    remove: Remove Order Item?
