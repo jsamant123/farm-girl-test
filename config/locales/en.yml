@@ -39,6 +39,7 @@ en:
       taken: has already been taken
   order:
     mark_fulfill: Mark Fulfilled
+    already_fulfilled: Order status is already fulfilled
     all: All Orders
     create_order: Create Order
     add: Add Order item
@@ -57,6 +58,9 @@ en:
       success: Order created successfully!
       error: Order could not be saved!
       duplicate_order_item: Please select unique items
+    fulfilled:
+      success: Order marked fulfilled successfully!
+      error: Order could not be marked fulfilled!
   product:
     select_quantity: Select Quantity
     select_product: Select Product

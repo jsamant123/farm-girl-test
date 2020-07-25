@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: %i[show]
+  before_action :find_order, only: %i[show mark_fulfilled]
 
   def index
     date = Date.current
@@ -26,7 +26,17 @@ class OrdersController < ApplicationController
 
   def show; end
 
-  def mark_fulfilled; end
+  def mark_fulfilled
+    redirect_to orders_path, flash: { danger: t('order.already_fulfilled') } and return if @order.fulfilled?
+
+    if @order.fulfilled!
+      flash[:success] = t('order.fulfilled.success')
+      redirect_to orders_path
+    else
+      flash[:danger] = t('order.fulfilled.error')
+      render :show
+    end
+  end
 
   private
 
