@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 # Use figaro as the configuration management
 gem 'figaro'
+gem 'factory_bot_rails'
+gem 'faker'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -49,6 +51,8 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'rspec-rails', '4.0.0.beta3'
+  gem 'shoulda-matchers'
   gem 'webdrivers'
 end
 
