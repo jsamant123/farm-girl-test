@@ -1,0 +1,19 @@
+<div class="container" >
+  <h2><%= t('order.details') %></h2>
+  <%= link_to t('order.all'), orders_path %>
+  </br>
+  <strong><%=t('order.headers.number')%>:</strong> <%= @order.id %>
+  </br>
+  <strong><%=t('order.headers.status')%>:</strong> <%= @order.status %>
+  </br>
+  <strong><%=t('order.headers.items')%>:</strong> <%= @order.product_names %>
+  </br>
+  <strong><%=t('order.headers.quantity')%>:</strong> <%= @order.order_items.sum(:quantity) %>
+  </br>
+  <strong><%=t('order.headers.fulfiller')%>:</strong> <%= @order.fulfiller.name %>
+  <% unless @order.fulfilled? %>
+    <div>
+      <%= link_to t('order.mark_fulfill'), order_mark_fulfilled_path(@order), method: :post, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

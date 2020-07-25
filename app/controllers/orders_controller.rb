@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :find_order, only: %i[show]
 
   def index
     date = Date.current
@@ -28,6 +29,10 @@ class OrdersController < ApplicationController
   def mark_fulfilled; end
 
   private
+
+  def find_order
+    @order = Order.find(params[:id] || params[:order_id])
+  end
 
   def order_params
     params.require(:order).permit(order_items_attributes: %i[product_id quantity _destroy])
