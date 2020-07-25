@@ -33,3 +33,5 @@ en:
   test:
     errors:
       blank: can't be blank
+      must_exist: must exist
+      taken: has already been taken
