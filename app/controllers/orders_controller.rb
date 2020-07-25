@@ -12,10 +12,24 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def create; end
+  def create
+    @order = Order.new(order_params)
+    if @order.save
+      flash[:success] = t('order.create.success')
+      redirect_to orders_path
+    else
+      flash[:danger] = t('order.create.error')
+      redirect_to new_order_path
+    end
+  end
 
   def show; end
 
   def mark_fulfilled; end
 
+  private
+
+  def order_params
+    params.require(:order).permit(order_items_attributes: %i[product_id quantity _destroy])
+  end
 end
