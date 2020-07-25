@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_133347) do
+ActiveRecord::Schema.define(version: 2020_07_27_134335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2020_07_27_133347) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "order_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "quantity", default: 1
+    t.uuid "order_id"
+    t.bigint "product_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
   create_table "orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "status", default: 0
     t.string "fulfiller_type"
@@ -55,4 +65,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_133347) do
 
   add_foreign_key "distribution_center_products", "distribution_centers"
   add_foreign_key "distribution_center_products", "products"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
 end
