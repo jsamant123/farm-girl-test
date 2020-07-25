@@ -7,6 +7,10 @@ RSpec.describe Product, type: :model do
     it { is_expected.to have_db_column(:name).of_type(:string) }
   end
 
+  describe 'associations' do
+    it { is_expected.to have_many(:order_items) }
+  end
+
   it 'has a valid factory' do
     expect(FactoryBot.build(:product)).to be_valid
   end
