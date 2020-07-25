@@ -1,24 +1,17 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Farm Girl Task
+## Dependencies
+* Ruby version : 2.6.3
+* Rails Version : 6.0.3
+## Configuration
+```gem install bundler && bundle install```
+```yarn install```
+## Setup and Start the Applicaton
+### Database Setup
+```rake db:create && rake db:migrate && rake db:seed```
+### Run the rails server
+```rails s```
+## Test Environment Setup
+### Test Database Setup
+```RAILS_ENV=test rake db:create && RAILS_ENV=test rake db:migrate```
+### Run the Test Suit
+```rspec```
