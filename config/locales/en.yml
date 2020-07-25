@@ -69,3 +69,4 @@ en:
   errors:
     no_items_select: Please add an order item
     not_found: Record not found
+    invalid_date: Please input a valid date

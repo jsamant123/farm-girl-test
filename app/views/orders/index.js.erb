@@ -1,0 +1,8 @@
+<% if @message.present? %>
+  $(".invalid-date").addClass("alert-danger");
+  $(".invalid-date").text("<%=@message%>");
+<% else %>
+  $(".invalid-date").removeClass("alert-danger");
+  $(".invalid-date").text("");
+  $(".filtered-orders").html("<%= escape_javascript(render partial: 'daily_order', locals: { orders: @orders, total_order_items: @total_order_items, average_quantity_sold: @average_quantity_sold } ) %>");
+<% end %>

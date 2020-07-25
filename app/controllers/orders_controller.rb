@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: %i[show mark_fulfilled]
+  before_action :validate_date, only: :index
 
   def index
-    date = Date.current
+    date = @parsed_date || Date.current
     @orders = Order.in_between_dates(date.beginning_of_day, date.end_of_day)
     @total_order_items, @average_quantity_sold = @orders.joins(:order_items)
                                                         .pluck("sum(order_items.quantity) as total_order_items,
@@ -46,5 +47,15 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(order_items_attributes: %i[product_id quantity _destroy])
+  end
+
+  def validate_date
+    return if params[:date].blank?
+
+    @parsed_date = Date.strptime(params[:date], '%m/%d/%Y').to_datetime rescue nil
+    unless @parsed_date
+      @message = t('errors.invalid_date')
+      respond_to { |format| format.js { render "index" } }
+    end
   end
 end

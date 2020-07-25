@@ -10,6 +10,7 @@ require("channels")
 require("jquery")
 require("cocoon")
 require("bootstrap-datepicker")
+require("packs/order")
 
 import "bootstrap"
 import "cocoon"
