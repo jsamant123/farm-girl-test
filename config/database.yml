@@ -1,19 +1,46 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+#
+# Install the pg driver:
+#   gem install pg
+# On macOS with Homebrew:
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# On macOS with MacPorts:
+#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+# On Windows:
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
+#
+# Configure Using Gemfile
+# gem 'pg'
+#
 default: &default
-  adapter: adapter: postgresql
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  adapter: postgresql
+  pool: <%= Figaro.env.RAILS_MAX_THREADS { 5 } %>
 
 development:
   <<: *default
-  database: farmgirl_dev
+  username: <%= Figaro.env.DB_USERNAME %>
+  password: <%= Figaro.env.DB_PASSWORD %>
+  host: <%= Figaro.env.DB_HOST %>
+  port: <%= Figaro.env.DB_PORT %>
+  database: <%= Figaro.env.DB_NAME %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: farmgirl_dev
+  username: <%= Figaro.env.DB_USERNAME %>
+  password: <%= Figaro.env.DB_PASSWORD %>
+  host: <%= Figaro.env.DB_HOST %>
+  port: <%= Figaro.env.DB_PORT %>
+  database: <%= Figaro.env.DB_NAME %>
 
 production:
   <<: *default
-  database: farmgirl_production
+  username: <%= Figaro.env.DB_USERNAME %>
+  password: <%= Figaro.env.DB_PASSWORD %>
+  host: <%= Figaro.env.DB_HOST %>
+  port: <%= Figaro.env.DB_PORT %>
+  database: <%= Figaro.env.DB_NAME %>
